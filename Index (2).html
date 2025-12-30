@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>امیر اسلاید | خدمات پاورپوینت، ورد، تایپ و خلاصه‌نویسی</title>
+  <meta name="description" content="امیر اسلاید: ساخت پاورپوینت ساده و حرفه‌ای، فایل Word ساده و طرح‌دار، تایپ جزوه، خلاصه‌سازی، تبدیل به PDF، اصلاح نگارشی و پکیج‌های ویژه" />
+  <!-- فونت فارسی (در صورت عدم دسترسی، از سیستم‌فونت استفاده می‌شود) -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;         /* slate-900 */
+      --card: #111827;       /* gray-900 */
+      --muted: #94a3b8;      /* slate-400 */
+      --text: #e5e7eb;       /* gray-200 */
+      --brand: #22d3ee;      /* cyan-400 */
+      --brand-2: #a78bfa;    /* violet-400 */
+      --accent: #34d399;     /* emerald-400 */
+      --danger: #fb7185;     /* rose-400 */
+      --shadow: 0 20px 45px rgba(0,0,0,.35);
+      --radius-xl: 20px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%;}
+    body {
+      margin: 0; background: radial-gradient(1200px 700px at 80% -20%, rgba(52,211,153,.08), transparent),
+      radial-gradient(1000px 600px at 10% -10%, rgba(167,139,250,.08), transparent), var(--bg);
+      color: var(--text); font-family: 'Vazirmatn', system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Arial, sans-serif;
+    }
+    header {
+      position: relative; overflow: hidden; padding: 64px 20px 28px; text-align: center;
+      background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(167,139,250,.10));
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .brand {
+      font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -.02em; margin: 0 0 8px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 6px 30px rgba(34,211,238,.16);
+    }
+    .subtitle { color: var(--muted); font-size: clamp(14px, 2vw, 18px); margin: 0; }.container { max-width: 1150px; margin: 24px auto; padding: 0 16px 64px; }
+
+.grid {
+  display: grid; gap: 18px; grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr);} }
+@media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr);} }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid rgba(148,163,184,.14); border-radius: var(--radius-xl);
+  padding: 18px 16px; box-shadow: var(--shadow); transition: transform .15s ease, border-color .2s ease;
+  cursor: pointer; min-height: 128px; position: relative; overflow: hidden;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(34,211,238,.35); }
+.card h3 { margin: 4px 0 6px; font-size: 18px; font-weight: 700; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px;
+  background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.35); color: #e0f2fe; font-size: 12px;
+}
+
+.footer-note { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 18px; }
+
+/* Modal */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,.6); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; padding: 18px; z-index: 50; }
+.modal { width: 100%; max-width: 720px; background: #0b1220; border: 1px solid rgba(148,163,184,.18); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+.modal header { background: linear-gradient(135deg, rgba(34,211,238,.10), rgba(167,139,250,.08)); padding: 18px 20px; border-bottom: 1px solid rgba(148,163,184,.12); text-align: right; }
+.modal h2 { margin: 0; font-size: 20px; }
+.modal .content { padding: 18px 20px; color: var(--text); }
+.modal .content p { margin: 0 0 10px; color: var(--text); line-height: 1.9; }
+.modal .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-start; padding: 0 20px 20px; }
+
+.btn { appearance: none; border: none; outline: none; cursor: pointer; border-radius: 14px; padding: 12px 16px; font-weight: 700; }
+.btn-price { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #00111a; }
+.btn-ghost { background: rgba(148,163,184,.12); color: var(--text); border: 1px solid rgba(148,163,184,.25); }
+
+/* Contact panel */
+.contact { background: #0b1220; border: 1px solid rgba(148,163,184,.18); border-radius: 20px; padding: 16px; box-shadow: var(--shadow); }
+.contact h3 { margin: 0 0 8px; font-size: 18px; }
+.contact p { margin: 6px 0; color: var(--muted); }
+.contact code { background: rgba(148,163,184,.14); border: 1px solid rgba(148,163,184,.25); padding: 2px 6px; border-radius: 8px; color: #e5e7eb; }
+
+/* Packages grid inside modal */
+.pkg-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 680px) { .pkg-grid { grid-template-columns: repeat(2, 1fr);} }
+.pkg-card { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid rgba(148,163,184,.14); border-radius: 16px; padding: 14px; cursor: pointer; transition: transform .15s ease, border-color .2s ease; }
+.pkg-card:hover { transform: translateY(-3px); border-color: rgba(52,211,153,.35); }
+.pkg-card h4 { margin: 0 0 8px; }
+.muted { color: var(--muted); }
+
+/* Accessibility & focus */
+.card:focus, .pkg-card:focus, .btn:focus { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <h1 class="brand" aria-label="نام وبسایت">امیر اسلاید</h1>
+    <p class="subtitle">خدمات تخصصی: پاورپوینت، Word، تایپ، خلاصه‌سازی، تبدیل PDF و ویرایش نگارشی</p>
+    <div style="margin-top:14px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+      <span class="chip" aria-hidden="true">کیفیت تضمینی</span>
+      <span class="chip" aria-hidden="true">تحویل سریع</span>
+      <span class="chip" aria-hidden="true">پشتیبانی دوستانه</span>
+    </div>
+  </header>  <main class="container" id="app" role="main" aria-live="polite">
+    <section>
+      <div class="grid" id="servicesGrid" aria-label="فهرست خدمات"></div>
+      <p class="footer-note">برای مشاهده توضیحات هر خدمت، روی کارت آن کلیک کنید.</p>
+    </section>
+  </main>  <!-- Modal container -->  <div class="modal-backdrop" id="modalRoot" aria-hidden="true" aria-label="پنجره محتوای خدمت">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header>
+        <h2 id="modalTitle">—</h2>
+      </header>
+      <div class="content" id="modalContent"></div>
+      <div class="actions" id="modalActions">
+        <button class="btn btn-ghost" id="closeModal">بستن</button>
+      </div>
+    </div>
+  </div>  <template id="contactTemplate">
+    <div class="contact" role="region" aria-label="اطلاعات تماس و پرداخت">
+      <h3>اطلاعات تماس و پرداخت</h3><p>شماره کارت: <code dir="ltr">5892 1014 6559 3123</code></p>
+  <p>آیدی تلگرام: <code>@its_amir_os3</code></p>
+  <p style="margin-top:10px">ممنونم از شما بخاطر بازدیدتون.</p>
+</div>
+
+  </template>  <script>
+    // داده‌های خدمات و پکیج‌ها
+    const services = [
+      {
+        id: 'ppt-simple', title: 'پاورپوینت ساده', preview: 'اسلایدهای مینیمال با انیمیشن. مناسب ارائه‌های رسمی.',
+        details: [
+          'هر اسلاید دارای انیمیشن می‌باشد با پس‌زمینه ساده و شیک و حرفه‌ای برای ارائه با اعتماد به نفس.',
+          'انتخاب این مورد برای پاورپوینت‌های زیر سال 2019 الزامیست.'
+        ], price: '10000 تومن'
+      },
+      {
+        id: 'ppt-pro', title: 'پاورپوینت حرفه‌ای', preview: 'انیمیشن و اسلایدآرایی جذاب با فونت‌های زیبا.',
+        details: [
+          'دارای انیمیشن‌های بسیار جذاب‌تر.',
+          'اسلایدآرایی‌های شیک.',
+          'استفاده از فونت‌های جذاب‌تر.',
+          'اگر می‌خواهید همه را انگشت به دهان بگذارید این آیتم را انتخاب کنید.'
+        ], price: '15000 تومن'
+      },
+      {
+        id: 'word-basic', title: 'ساخت فایل Word ساده', preview: 'انتخابی مطمئن برای ارائه‌های پرمتن و تمیز.',
+        details: [
+          'برای ارائه‌های پرمتن و شیک انتخابی مطمئن است.'
+        ], price: '10000 تومن'
+      },
+      {
+        id: 'word-decor', title: 'ساخت فایل Word طرح‌دار', preview: 'قاب‌بندی زیبا، پس‌زمینه طرح‌دار و ویرایش رایگان.',
+        details: [
+          'قاب‌بندی بسیار زیبا.',
+          'پس‌زمینه طرح‌دار.',
+          'ویرایش رایگان تا هرجایی که شما راضی باشید.',
+          'تمامی فنون Word شامل حال شما می‌شود.'
+        ], price: '10000 تومن'
+      },
+      {
+        id: 'typing', title: 'تایپ جزوه و فایل', preview: 'تایپ دقیق بدون غلط املایی و نگارشی.',
+        details: [
+          'جزوه یا فایل مورد نظرتون رو برای ما بفرستین و کامل بدون هیچ غلط املایی یا نگارشی‌ای تحویل بگیرید.'
+        ], price: '5000 تومن'
+      },
+      {
+        id: 'summary', title: 'خلاصه‌سازی جزوه و فایل', preview: 'خلاصه‌نویسی حرفه‌ای برای کاهش حجم محتوا.',
+        details: [
+          'جزوه یا فایل مورد نظرتونو برای ما بفرستید و خلاصه شده تحویل بگیرین.',
+          'مناسب برای کسایی که حجم فایل‌ها روی دوششون سنگینی می‌کنه.'
+        ], price: '10000 تومن'
+      },
+      {
+        id: 'to-pdf', title: 'تبدیل تمام فایل‌ها به PDF', preview: 'تبدیل همه فرمت‌ها به PDF طبق درخواست.',
+        details: [
+          'تمام فایل‌هایی که برای ما می‌فرستین رو به درخواستتون تبدیل به فایل PDF می‌کنیم.',
+          'این آیتم اگر در کنار کارهای دیگه باشه برای شما رایگان تموم می‌شه.'
+        ], price: '50000 تومن'
+      },
+      {
+        id: 'proof', title: 'اصلاح مشکلات نگارشی و املایی', preview: 'ویرایش نگارشی حرفه‌ای برای متن‌های شما.',
+        details: [
+          'آیا جزوه یا فایل شما پر از اشتباهات نگارشی و املایی هست؟',
+          'دیگر مشکلی ندارین چون ما کنارتونیم و براتون این مشکل رو حل می‌کنیم.'
+        ], price: '10000 تومن'
+      },
+      {
+        id: 'packages', title: 'پکیج‌ها', preview: 'چهار پکیج کاربردی برای نیازهای مختلف.',
+        isPackageEntry: true
+      }
+    ];
+
+    const packages = [
+      {
+        id: 'pkg1', title: 'پکیج ۱: «دانشجوِ همیشه آماده»', price: '380000 تومن',
+        target: 'مناسب: دانشجویان، کنکوری‌ها، ارشد/دکتری',
+        contents: [
+          'خلاصه‌سازی جزوه (PDF یا Word)',
+          'تایپ جزوه دست‌نویس یا عکس',
+          'تبدیل ویس کلاس به متن',
+          'طراحی پاورپوینت ساده برای ارائه کلاسی'
+        ],
+        advantage: [
+          'تحویل سریع',
+          'فرمت‌بندی استاندارد دانشگاهی',
+          'تخفیف نسبت به خرید تکی',
+          '«همه کارهای یک ترم، با یک سفارش»'
+        ]
+      },
+      {
+        id: 'pkg2', title: 'پکیج ۲: «ارائه حرفه‌ای»', price: '450000 تومن',
+        target: 'مناسب: دانشجوها، معلم‌ها، کارمندها، مدرس‌ها',
+        contents: [
+          'طراحی پاورپوینت حرفه‌ای (تم اختصاصی)',
+          'خلاصه‌سازی محتوا برای اسلاید',
+          'تبدیل فایل Word یا جزوه به اسلاید',
+          'ویرایش نگارشی متن'
+        ],
+        advantage: [
+          'اسلاید کم‌متن و جذاب',
+          'هماهنگ با اصول ارائه',
+          'آماده ارائه حضوری یا آنلاین'
+        ]
+      },
+      {
+        id: 'pkg3', title: 'پکیج ۳: «تولید محتوا بدون دردسر»', price: '490000 تومن',
+        target: 'مناسب: مدرس‌ها، پیج‌های آموزشی، تولیدکنندگان محتوا',
+        contents: [
+          'تبدیل ویس به متن حرفه‌ای',
+          'خلاصه‌سازی متن برای پست یا اسکریپت',
+          'تایپ و ویرایش در Word',
+          'آماده‌سازی متن برای پاورپوینت یا PDF'
+        ],
+        advantage: [
+          'صرفه‌جویی در زمان',
+          'متن روان و قابل انتشار',
+          'قابل استفاده برای شبکه‌های اجتماعی یا آموزش'
+        ]
+      },
+      {
+        id: 'pkgVIP', title: 'پکیج VIP', price: '550000 تومن',
+        target: 'مناسب: مشتری‌های پرکار و وفادار',
+        contents: [
+          'خلاصه‌سازی', 'تایپ جزوه و ویس', 'پاورپوینت حرفه‌ای', 'ویرایش و فرمت نهایی', 'پشتیبانی اولویت‌دار'
+        ],
+        advantage: [
+          'قیمت مقرون‌به‌صرفه نسبت به حجم',
+          'یک فروشنده، چند خدمت',
+          'مناسب پروژه‌های سنگین'
+        ]
+      }
+    ];
+
+    // رندر کارت‌ها
+    const grid = document.getElementById('servicesGrid');
+    services.forEach(s => {
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.tabIndex = 0;
+      el.setAttribute('role', 'button');
+      el.setAttribute('aria-label', s.title);
+      el.innerHTML = `<h3>${s.title}</h3><p>${s.preview || ''}</p>`;
+      el.addEventListener('click', () => openService(s));
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openService(s); } });
+      grid.appendChild(el);
+    });
+
+    // مدیریت مودال‌ها
+    const modalRoot = document.getElementById('modalRoot');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const modalActions = document.getElementById('modalActions');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    function openModal() {
+      modalRoot.style.display = 'flex';
+      modalRoot.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modalRoot.style.display = 'none';
+      modalRoot.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      // پاکسازی محتوای قبلی
+      modalTitle.textContent = '—';
+      modalContent.innerHTML = '';
+      const oldBtns = modalActions.querySelectorAll('.btn-price');
+      oldBtns.forEach(b => b.remove());
+    }
+    closeModalBtn.addEventListener('click', closeModal);
+    modalRoot.addEventListener('click', (e) => { if (e.target === modalRoot) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalRoot.style.display === 'flex') closeModal(); });
+
+    // باز کردن خدمت یا پکیج
+    function openService(svc) {
+      if (svc.isPackageEntry) { return openPackagesList(); }
+      modalTitle.textContent = svc.title;
+      modalContent.innerHTML = svc.details.map(t => `<p>• ${t}</p>`).join('');
+      // دکمه قیمت
+      const priceBtn = document.createElement('button');
+      priceBtn.className = 'btn btn-price';
+      priceBtn.textContent = svc.price;
+      priceBtn.addEventListener('click', showContact);
+      modalActions.prepend(priceBtn);
+      openModal();
+    }
+
+    function openPackagesList() {
+      modalTitle.textContent = 'پکیج‌ها';
+      const box = document.createElement('div');
+      box.className = 'pkg-grid';
+      packages.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'pkg-card';
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.innerHTML = `<h4>${p.title}</h4><p class="muted">${p.target}</p>`;
+        card.addEventListener('click', () => openPackageDetail(p));
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPackageDetail(p); } });
+        box.appendChild(card);
+      });
+      modalContent.innerHTML = '';
+      modalContent.appendChild(box);
+      openModal();
+    }
+
+    function openPackageDetail(pkg) {
+      modalTitle.textContent = pkg.title;
+      const section = document.createElement('div');
+      section.innerHTML = `
+        <p class="muted">${pkg.target}</p>
+        <p><strong>محتویات پکیج:</strong></p>
+        ${pkg.contents.map(x => `<p>• ${x}</p>`).join('')}
+        <p><strong>مزیت رقابتی:</strong></p>
+        ${pkg.advantage.map(x => `<p>• ${x}</p>`).join('')}
+      `;
+      modalContent.innerHTML = '';
+      modalContent.appendChild(section);
+      // دکمه قیمت
+      const priceBtn = document.createElement('button');
+      priceBtn.className = 'btn btn-price';
+      priceBtn.textContent = pkg.price;
+      priceBtn.addEventListener('click', showContact);
+      // حذف دکمه‌های قدیمی و افزودن جدید
+      const oldBtns = modalActions.querySelectorAll('.btn-price');
+      oldBtns.forEach(b => b.remove());
+      modalActions.prepend(priceBtn);
+    }
+
+    function showContact() {
+      const tpl = document.getElementById('contactTemplate');
+      const node = tpl.content.cloneNode(true);
+      // درج یا جایگزینی بخش تماس در پایین محتوا
+      const existing = modalContent.querySelector('.contact');
+      if (existing) existing.remove();
+      modalContent.appendChild(node);
+    }
+  </script></body>
+</html>
